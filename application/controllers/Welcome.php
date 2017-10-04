@@ -24,4 +24,5 @@ class Welcome extends CI_Controller {
 	}
 
 	//NANTI JGN LUPA COMMIT GAES
+    //OKEE
 }

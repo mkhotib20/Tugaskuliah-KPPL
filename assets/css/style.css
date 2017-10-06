@@ -1,0 +1,49 @@
+.btn-green{
+	background-color: rgb(168, 207, 69) !important;
+	color: white;
+}
+.btn-green:hover{
+	background-color: rgb(150, 188, 48) !important;
+	color: white;
+}
+
+.box-text{
+	border-style: dotted;
+	border-radius: 20px;
+	padding-top: 30px;
+	text-align: center;
+	height: 130px;
+	font-size: 20px;
+}
+.plus{
+	font-size: 40px;
+	padding-top: 30px;
+}
+.box-form{
+	padding: 10px;
+	height: 150px;
+	width: 100%;
+	margin-bottom: 30px;
+	border-radius: 20px;
+}
+.box-form p{
+	color: white;
+}
+.box-form:hover{
+	box-shadow: 0px 0px 4px;
+}
+.box-form:active{
+	box-shadow: 0px 0px 4px;
+}
+.box-form:focus{
+	box-shadow: 0px 0px 4px;
+}
+.box-green{
+	background-color: #8C9C7B;
+}
+.box-yellow{
+	background-color: #D7CC75;
+}
+.box-blue{
+	background-color: #889FAC;
+}

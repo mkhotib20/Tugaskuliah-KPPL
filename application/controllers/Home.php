@@ -7,6 +7,12 @@ class home extends CI_Controller {
 		$diff =  $tanggal_lahir - $sekarang;
 		$hasil = floor($diff / (60 * 60 * 24))+1 ;
 	}
+	public function index(){
+		
+		$this->load->view('header');
+		$this->load->view('home');
+		$this->load->view('footer');
+	}
 	public function peminjaman(){
 		$data=$this->Models->read('peminjaman','','')->result_array();
 		$kirim['tampil']  = $data;
@@ -22,6 +28,30 @@ class home extends CI_Controller {
 		$kirim['tampilS']  = $dataS;
 		$this->load->view('header');
 		$this->load->view('input-pinjam', $kirim);
+		$this->load->view('footer');
+	}
+	public function mobil(){
+		$data=$this->Models->read('mobil','','')->result_array();
+		$kirim['tampil']  = $data;
+		$this->load->view('header');
+		$this->load->view('mobil', $kirim);
+		$this->load->view('footer');
+	}
+	public function supir(){
+		$data=$this->Models->read('supir','','')->result_array();
+		$kirim['tampil']  = $data;
+		$this->load->view('header');
+		$this->load->view('supir', $kirim);
+		$this->load->view('footer');
+	}
+	public function inputSupir(){
+		$this->load->view('header');
+		$this->load->view('input-supir');
+		$this->load->view('footer');
+	}
+	public function inputMobil(){
+		$this->load->view('header');
+		$this->load->view('input-mobil');
 		$this->load->view('footer');
 	}
 	public function prosesPinjam(){
@@ -93,25 +123,44 @@ class home extends CI_Controller {
 			echo 'gaga;';
 		}
 	}
-	public function index(){
-		
-		$this->load->view('header');
-		$this->load->view('home');
-		$this->load->view('footer');
+	public function prosesMobil(){
+		$config['upload_path']          = 'gambar/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['max_size']             = 5000;
+        $config['max_width']            = 5000;
+        $config['max_height']           = 5000;
+		$this->load->library('upload', $config);
+		if ($this->upload->do_upload('gambarMobil')) {
+			$updata = array('upload_data' => $this->upload->data());
+			foreach ($updata as $d) {
+				$filename = $d['file_name'];
+			}
+			$pathGambar = base_url().$config['upload_path'].$filename;
+			$nopol = $this->input->post('noPolisi');
+			$merk = $this->input->post('merkMobil');
+			$tarif = $this->input->post('tarifMobil');
+			$nopol = $this->input->post('noPolisi');
+			$data = array(
+				'no_polisi' => $nopol,
+				'merk' => $merk,
+				'harga' => $tarif,
+				'status' => 1 ,
+				'gambar' => $pathGambar , 
+			);
+			if ($this->Models->input('mobil', $data)) {
+				 $this->session->set_flashdata('pesan', '
+					<div class="alert alert-success alert-dismissible">
+	            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	            <h4><i class="icon fa fa-ban"></i> Sukses!</h4>Data yang anda masukan telah tersimapan di database. </div>
+				');
+				redirect(base_url('home/mobil'));
+			}
+		}
+		else{
+			
+		}
 	}
-    public function supir(){
-		$data=$this->Models->read('supir','','')->result_array();
-		$kirim['tampil']  = $data;
-		$this->load->view('header');
-		$this->load->view('supir', $kirim);
-		$this->load->view('footer');
-	}
-	public function inputSupir(){
-		$this->load->view('header');
-		$this->load->view('input-supir');
-		$this->load->view('footer');
-	}
-    public function prosesSupir(){
+	public function prosesSupir(){
 		$config['upload_path']          = 'gambar/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 5000;
@@ -148,8 +197,7 @@ class home extends CI_Controller {
 			}
 		}
 		else{
-        }}
-    }
-
 			
-
+		}
+	}
+}

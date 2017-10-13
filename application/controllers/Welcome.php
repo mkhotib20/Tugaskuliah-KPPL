@@ -22,8 +22,4 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
-
-	//NANTI JGN LUPA COMMIT GAES
-    //OKEE
-    //coba aja
 }

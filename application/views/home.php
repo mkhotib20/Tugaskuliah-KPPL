@@ -1,5 +1,6 @@
   <div class="content-wrapper">
     <section class="content-header">
+    <?php echo $this->session->flashdata('pesan'); ?>
       <h1>
         Dashboard
         <small>Control panel</small>

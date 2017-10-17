@@ -1,58 +1,91 @@
 <?php
 
 class home extends CI_Controller {
-	function coba(){
-		$tanggal_lahir  = strtotime('2017-10-10');
-		$sekarang    = time(); 
-		$diff =  $tanggal_lahir - $sekarang;
-		$hasil = floor($diff / (60 * 60 * 24))+1 ;
-	}
+
 	public function index(){
+		if ($this->session->has_userdata('username')) {
+			$this->load->view('header');
+			$this->load->view('home');
+			$this->load->view('footer');
+		}
+		else{
+			redirect(base_url('login'));
+		}
 		
-		$this->load->view('header');
-		$this->load->view('home');
-		$this->load->view('footer');
 	}
 	public function peminjaman(){
-		$data=$this->Models->read('peminjaman','','')->result_array();
-		$kirim['tampil']  = $data;
-		$this->load->view('header');
-		$this->load->view('peminjaman', $kirim);
-		$this->load->view('footer');
+		if ($this->session->has_userdata('username')) {
+			$data=$this->Models->read('peminjaman','','')->result_array();
+			$kirim['tampil']  = $data;
+			$this->load->view('header');
+			$this->load->view('peminjaman', $kirim);
+			$this->load->view('footer');
+		}
+		else{
+			redirect(base_url('login'));
+		}
+		
 	}
 	public function inputPeminjaman(){
-		$kirim['kode'] = time();
-		$dataM=$this->Models->read('mobil','','')->result_array();
-		$dataS=$this->Models->read('supir','','')->result_array();
-		$kirim['tampilM']  = $dataM;
-		$kirim['tampilS']  = $dataS;
-		$this->load->view('header');
-		$this->load->view('input-pinjam', $kirim);
-		$this->load->view('footer');
+		if ($this->session->has_userdata('username')) {
+			$kirim['kode'] = time();
+			$dataM=$this->Models->read('mobil','','')->result_array();
+			$dataS=$this->Models->read('supir','','')->result_array();
+			$kirim['tampilM']  = $dataM;
+			$kirim['tampilS']  = $dataS;
+			$this->load->view('header');
+			$this->load->view('input-pinjam', $kirim);
+			$this->load->view('footer');
+		}
+		else{
+			redirect(base_url('login'));
+		}
 	}
 	public function mobil(){
-		$data=$this->Models->read('mobil','','')->result_array();
-		$kirim['tampil']  = $data;
-		$this->load->view('header');
-		$this->load->view('mobil', $kirim);
-		$this->load->view('footer');
+		if ($this->session->has_userdata('username')) {
+			$data=$this->Models->read('mobil','','')->result_array();
+			$kirim['tampil']  = $data;
+			$this->load->view('header');
+			$this->load->view('mobil', $kirim);
+			$this->load->view('footer');
+		}
+		else{
+			redirect(base_url('login'));
+		}
+		
 	}
 	public function supir(){
-		$data=$this->Models->read('supir','','')->result_array();
-		$kirim['tampil']  = $data;
-		$this->load->view('header');
-		$this->load->view('supir', $kirim);
-		$this->load->view('footer');
+		if ($this->session->has_userdata('username')) {
+			$data=$this->Models->read('supir','','')->result_array();
+			$kirim['tampil']  = $data;
+			$this->load->view('header');
+			$this->load->view('supir', $kirim);
+			$this->load->view('footer');
+		}
+		else{
+			redirect(base_url('login'));
+		}
 	}
 	public function inputSupir(){
-		$this->load->view('header');
-		$this->load->view('input-supir');
-		$this->load->view('footer');
+		if ($this->session->has_userdata('username')) {
+			$this->load->view('header');
+			$this->load->view('input-supir');
+			$this->load->view('footer');
+		}
+		else{
+			redirect(base_url('login'));
+		}
 	}
 	public function inputMobil(){
-		$this->load->view('header');
-		$this->load->view('input-mobil');
-		$this->load->view('footer');
+		if ($this->session->has_userdata('username')) {
+			$this->load->view('header');
+			$this->load->view('input-mobil');
+			$this->load->view('footer');
+		}
+		else{
+			redirect(base_url('login'));
+		}
+		
 	}
 	public function prosesPinjam(){
 		$kodePeminjaman = $this->input->post('kodePeminjaman');

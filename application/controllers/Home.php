@@ -10,8 +10,8 @@ class home extends CI_Controller {
 		}
 		else{
 			redirect(base_url('login'));
-		}
-		
+                        
+                }		
 	}
 	public function peminjaman(){
 		if ($this->session->has_userdata('username')) {

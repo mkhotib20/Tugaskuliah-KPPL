@@ -3,8 +3,7 @@
 class login extends CI_Controller{
 	public function logout(){
 		$this->session->sess_destroy();
-		redirect(base_url('login'));
-	}
+		redirect(base_url('login'));}
 	public function index(){
 		$this->load->view('login');
 	}
@@ -41,9 +40,7 @@ class login extends CI_Controller{
 					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Username yang anda masukan salah
 					</div>
 					');
-				redirect(base_url('login'));
-		}
-	}
+				redirect(base_url('login'));}}
 	
 }
  ?>

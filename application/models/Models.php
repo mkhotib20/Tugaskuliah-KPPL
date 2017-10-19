@@ -17,8 +17,18 @@ class models extends CI_Model
 	public function update($tabel, $data, $where, $id){
 		return $this->db->update($tabel, $data, array($where => $id));
 	}
-	public function delete(){
-		
+	public function readPeminjaman(){
+		return $this->db->query("
+				SELECT * FROM 
+					`peminjaman`, `peminjam`, `mobil`, `supir` 
+				WHERE 
+					`peminjaman`.`no_pol` = `mobil`.`no_polisi`
+				AND 
+					`peminjaman`.`no_ktp_spr`=`supir`.`no_ktp` 
+				AND 
+					`peminjaman`.`no_ktp_pjm`=`peminjam`.`no_ktp_peminjam`
+
+			");
 	}
 	
 }

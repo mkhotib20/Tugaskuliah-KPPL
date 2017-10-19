@@ -15,7 +15,7 @@ class home extends CI_Controller {
 	}
 	public function peminjaman(){
 		if ($this->session->has_userdata('username')) {
-			$data=$this->Models->read('peminjaman','','')->result_array();
+			$data=$this->Models->readPeminjaman()->result_array();
 			$kirim['tampil']  = $data;
 			$this->load->view('header');
 			$this->load->view('peminjaman', $kirim);
@@ -143,8 +143,13 @@ class home extends CI_Controller {
 			'uang_muka' => $uangMuka, 
 			'kondisi' => $kondisiKendaraan, 
 		);
+		$dataUpdate = array(
+			'status' => 0 , 
+		);
 		if ($this->Models->input('peminjam', $dataPeminjam)) {
 			if ($this->Models->input('peminjaman', $dataPeminjaman)) {
+				$this->Models->update('mobil', $dataUpdate, 'no_polisi', $no_pol);
+				$this->Models->update('supir', $dataUpdate, 'no_ktp', $ktp_supir);
 				echo 'berhasil';
 				redirect(base_url('home/peminjaman'));
 			}

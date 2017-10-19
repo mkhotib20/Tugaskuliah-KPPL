@@ -14,7 +14,11 @@
               <select name="mobil" class="form-control">
                 <option selected="" disabled="">--pilih mobil--</option>
                 <?php foreach ($tampilM as $mobil) { ?>
-                <option><?php echo $mobil['merk'] ?></option>
+                <option <?php 
+                    if ($mobil['status']==0) {
+                      echo 'disabled=""';
+                    }
+                 ?> ><?php echo $mobil['merk'] ?></option>
                 <?php } ?>                
               </select>
             </p>
@@ -22,7 +26,11 @@
               <select name="supir" class="form-control">
                 <option selected="" disabled="">--pilih supir, abaikan jika tidak--</option>
                 <?php foreach ($tampilS as $supir) { ?>
-                <option><?php echo $supir['nama_supir'] ?></option>
+                <option <?php 
+                    if ($supir['status']==0) {
+                      echo 'disabled=""';
+                    }
+                 ?> ><?php echo $supir['nama_supir'] ?></option>
                 <?php } ?>
               </select>
             </p>

@@ -7,14 +7,6 @@
       <br>
      <div class="row">
        <div class="col-md-3">
-          <div class="input-group input-group-sm">
-            <input type="text" placeholder="Cari Kode" class="form-control">
-            <span class="input-group-btn">
-              <button type="button" class="btn btn-success btn-flat">Go!</button>
-            </span>
-          </div>
-       </div>
-       <div class="col-md-3">
          <a class="btn btn-success" href="<?php echo base_url('home/inputSupir') ?>">Tambah Supir</a>
        </div>
      </div>
@@ -38,8 +30,6 @@
                     <th style="text-align: center;">No SIM</th>
                     <th style="width: 100px; text-align: center;">Foto</th>
                     <th style="text-align: center;">Status</th>
-                    <th style="text-align: center;">Edit</th>
-                    <th style="text-align: center;">Hapus</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -61,8 +51,6 @@
                         } 
                       ?>
                     </td>
-                    <td style="text-align: center" ><a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span></a></td>
-                    <td style="text-align: center" ><a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a></td>
                   </tr>
                 <?php } ?>
                 </tbody>

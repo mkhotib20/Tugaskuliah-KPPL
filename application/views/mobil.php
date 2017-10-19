@@ -7,21 +7,13 @@
       <br>
      <div class="row">
        <div class="col-md-3">
-          <div class="input-group input-group-sm">
-            <input type="text" placeholder="Cari Kode" class="form-control">
-            <span class="input-group-btn">
-              <button type="button" class="btn btn-success btn-flat">Go!</button>
-            </span>
-          </div>
-       </div>
-       <div class="col-md-3">
          <a class="btn btn-success" href="<?php echo base_url('home/inputMobil') ?>">Tambah Mobil</a>
        </div>
      </div>
      <br>
      <?php echo $this->session->flashdata('pesan') ?>
        <br>
-      <div class="box">
+          <div class="box">
             <div class="box-header">
               <h3 class="box-title">Data Table With Full Features</h3>
             </div>
@@ -36,8 +28,7 @@
                     <th style="text-align: center;">Tarif Mobil</th>
                     <th style="text-align: center;">Status Mobil</th>
                     <th style="width: 100px; text-align: center;">Gambar Mobil</th>
-                    <th style="text-align: center;">Edit Informasi</th>
-                    <th style="text-align: center;">Hapus Mobil</th>
+                    <th style="width: 100px; text-align: center;">Status Mobil</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -48,8 +39,16 @@
                     <td><?php echo $t['harga'] ?></td>
                     <td><?php echo $t['status'] ?></td>
                     <td><img style="width: 350px" src="<?php echo $t['gambar'] ?>"></td>
-                    <td style="text-align: center" ><a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-edit"></span></a></td>
-                    <td style="text-align: center" ><a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a></td>
+                    <td style="text-align: center" >
+                      <?php 
+                        if ($t['status']==1) {
+                          echo '<span class="btn btn-success glyphicon glyphicon-ok"></span>';
+                        }
+                        else{
+                          echo '<span class="btn btn-danger glyphicon glyphicon-ban-circle"></span>';
+                        } 
+                      ?>
+                    </td>
                   </tr>
                 <?php } ?>
                 </tbody>

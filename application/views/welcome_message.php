@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+//@codeCoverageIgnore
 ?><!DOCTYPE html>
 <html lang="en">
 <head>

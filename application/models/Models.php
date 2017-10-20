@@ -30,6 +30,12 @@ class models extends CI_Model
 
 			");
 	}
+	public function enkripsi($password){
+		$key = $this->config->item('encryption_key');
+	    $salt1 = hash('sha512', $key . $password);
+	    $salt2 = hash('sha512', $password . $key);
+	    return hash('sha512', $salt1 . $password . $salt2);
+	}
 	
 }
  ?>

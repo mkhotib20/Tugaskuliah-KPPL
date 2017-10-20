@@ -22,19 +22,30 @@
     <?php echo $this->session->flashdata('pesan'); ?>
     <?php echo form_open('login/prosesLogin'); ?>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Username" name="username">
+        <input 
+            <?php 
+              if (!$this->session->flashdata('login')) {
+                echo 'autofocus';
+              }
+            ?> 
+         type="text" value="<?php echo $this->session->flashdata('login'); ?>" class="form-control" placeholder="Username" name="username">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" name="password">
+        <input 
+            <?php 
+              if ($this->session->flashdata('login')) {
+                echo 'autofocus';
+              }
+             ?> 
+         type="password" class="form-control" placeholder="Password" name="password">
+
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <input type="submit" class="btn btn-green pull-right" value="Login">
     </form>
 
-    <a href="#">I forgot my password</a><br>
-    <a href="register.html" class="text-center">Register a new membership</a>
-
+    
   </div>
 </div>
 

@@ -36,7 +36,7 @@
                   <tr>
                     <td><?php echo $t['no_polisi'] ?></td>
                     <td><?php echo $t['merk'] ?></td>
-                    <td><?php echo $t['harga'] ?></td>
+                    <td><?php echo 'Rp. '.number_format( $t['harga'], 2, ',', '.') ?></td>
                     <td><?php echo $t['status'] ?></td>
                     <td><img style="width: 350px" src="<?php echo $t['gambar'] ?>"></td>
                     <td style="text-align: center" >

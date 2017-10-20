@@ -235,7 +235,7 @@ class home extends CI_Controller {
 			}
 		}
 		else{
-			
+			echo 'salah woy';
 		}
 	}
 }

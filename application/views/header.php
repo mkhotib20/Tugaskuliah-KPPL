@@ -62,19 +62,19 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo base_url('home/peminjaman') ?>">
+          <a href="<?php echo base_url('halamanPeminjaman/peminjaman') ?>">
             <i class="fa fa-files-o"></i>
             <span>Data Peminjaman</span>
           </a>
         </li>
         <li>
-          <a href="<?php echo base_url('home/mobil') ?>">
+          <a href="<?php echo base_url('halamanMobil/mobil') ?>">
             <i class="fa fa-car"></i>
             <span>Data Mobil</span>
           </a>
         </li>
         <li>
-          <a href="<?php echo base_url('home/supir') ?>">
+          <a href="<?php echo base_url('halamanSupir/supir') ?>">
             <i class="fa fa-users"></i>
             <span>Data Supir</span>
           </a>

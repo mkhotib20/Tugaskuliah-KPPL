@@ -7,7 +7,7 @@
       <br>
      <div class="row">
        <div class="col-md-3">
-         <a class="btn btn-success" href="<?php echo base_url('home/inputMobil') ?>">Tambah Mobil</a>
+         <a class="btn btn-success" href="<?php echo base_url('halamanMobil/inputMobil') ?>">Tambah Mobil</a>
        </div>
      </div>
      <br>

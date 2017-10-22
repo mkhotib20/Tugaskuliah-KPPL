@@ -5,9 +5,10 @@
       <h1 style="margin-bottom: 70px">
         Data Peminjaman
         <small>Pencatatan segala peminjaman mobil</small>
+        <?php echo $this->session->flashdata('pesan') ?>
       </h1>
       <div class="row">
-          <?php echo form_open('home/prosesPinjam') ?>
+          <?php echo form_open('halamanPeminjaman/prosesPinjam') ?>
         <div class="col-md-6">
             <p><input type="text" class="form-control" readonly="" value="<?php echo $kode ?>" name="kodePeminjaman"></p>
             <p>
@@ -57,4 +58,3 @@
       <br>
     </section>
   </div>
-

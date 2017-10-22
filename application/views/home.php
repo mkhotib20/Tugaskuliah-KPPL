@@ -11,9 +11,9 @@
       <br>
       <h4>
         <ol>
-          <li>Mencatat Semua data peminjaman (<a href="#">Halaman Peminjaman</a>) </li>
-          <li>Mencatat dan memperbaharui data Mobil (<a href="#">Halaman Mobil</a>) </li>
-          <li>Mencatat dan memperbaharui data Supir (<a href="#">Halaman Supir</a>) </li>
+          <li>Mencatat Semua data peminjaman (<a href="halamanPeminjaman/peminjaman">Halaman Peminjaman</a>) </li>
+          <li>Mencatat dan memperbaharui data Mobil (<a href="halamanMobil/mobil">Halaman Mobil</a>) </li>
+          <li>Mencatat dan memperbaharui data Supir (<a href="halamanSupir/supir">Halaman Supir</a>) </li>
         </ol>
       </h4>
     </section>

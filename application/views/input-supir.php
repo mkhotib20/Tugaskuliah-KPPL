@@ -3,9 +3,10 @@
       <h1 style="margin-bottom: 70px">
         Data Supir
         <small>Pencatatan data Supir</small>
+        <?php echo $this->session->flashdata('pesan') ?>
       </h1>
       <div class="row">
-          <?php echo form_open_multipart('Home/prosesSupir') ?>
+          <?php echo form_open_multipart('HalamanSupir/prosesSupir') ?>
         <div class="col-md-4">
           <p><input type="text" class="form-control" placeholder="Nomor KTP" name="noKTP"></p>
           <p><input type="text" class="form-control" placeholder="Nama Supir" name="namaSupir"></p>

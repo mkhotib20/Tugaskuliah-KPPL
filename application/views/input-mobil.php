@@ -3,9 +3,10 @@
       <h1 style="margin-bottom: 70px">
         Data Mobil
         <small>Pencatatan data mobil</small>
+        <?php echo $this->session->flashdata('pesan') ?>
       </h1>
       <div class="row">
-          <?php echo form_open_multipart('Home/prosesMobil') ?>
+          <?php echo form_open_multipart('halamanMobil/prosesMobil') ?>
         <div class="col-md-4">
           <p><input type="text" class="form-control" placeholder="Nomor Polisi" name="noPolisi"></p>
           <p><input type="text" class="form-control" placeholder="Merk Mobil" name="merkMobil"></p>

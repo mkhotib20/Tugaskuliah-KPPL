@@ -7,7 +7,7 @@
       <br>
      <div class="row">
        <div class="col-md-3">
-         <a class="btn btn-success" href="<?php echo base_url('home/inputSupir') ?>">Tambah Supir</a>
+         <a class="btn btn-success" href="<?php echo base_url('halamanSupir/inputSupir') ?>">Tambah Supir</a>
        </div>
      </div>
      <br>

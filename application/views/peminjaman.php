@@ -3,11 +3,12 @@
       <h1>
         Data Peminjaman
         <small>Pencatatan segala peminjaman mobil</small>
+        <?php echo $this->session->flashdata('simpanSukses') ?>
       </h1>
       <br>
      <div class="row">
       <div class="col-md-3">
-         <a class="btn btn-success" href="<?php echo base_url('home/inputPeminjaman') ?>">Tambah Peminjaman</a>
+         <a class="btn btn-success" href="<?php echo base_url('halamanPeminjaman/inputPeminjaman') ?>">Tambah Peminjaman</a>
        </div>
      </div>
        <br>

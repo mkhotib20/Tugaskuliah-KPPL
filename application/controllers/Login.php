@@ -9,15 +9,19 @@ class login extends CI_Controller{
 		$this->load->view('login');
 	}
 	public function prosesLogin(){
-		$username = $this->input->post('username');
-		$password = $this->Models->enkripsi($this->input->post('password'));
+
+		$this->load->helper('security', true);
+		$username = $this->input->post('username', true);
+		$password = $this->Models->enkripsi($this->input->post('password', true));
 		$data = $this->Models->readWH('user', 'username', $username);
 		if ($data->num_rows()>0) {
 			foreach ($data->result_array() as $akun) {
 				$pass = $akun['password'];
+                $akses = $akun['hak_akses'];
 			}
 			if ($password==$pass) {
 				$this->session->set_userdata('username', $username);
+                $this->session->set_userdata('hak_akses', $akses);
 				$this->session->set_flashdata('pesan', '
 					<div class="alert alert-success alert-dismissible" role="alert">
 					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Selamat Datang Admin!

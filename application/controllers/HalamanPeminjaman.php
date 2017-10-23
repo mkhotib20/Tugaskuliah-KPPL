@@ -3,7 +3,7 @@
 class halamanPeminjaman extends CI_Controller {
     public function __construct() {
 	parent::__construct();
-       if(!$this->session->has_userdata('username')){
+     	if($this->session->userdata('hak_akses')!=2){
             redirect(base_url('login'));
         }
     }

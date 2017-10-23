@@ -11,7 +11,7 @@ class HalamanMobil_test extends TestCase
         
         public function test_view_mobil_sukses() {
                 $_SESSION['username'] = 'admin';
-                
+                $_SESSION['hak_akses'] = 2;
     		$output = $this->request('GET', 'HalamanMobil/mobil');
     		$this->assertContains('<title>Green Rent | Dashboard</title>', $output);
         }
@@ -23,12 +23,13 @@ class HalamanMobil_test extends TestCase
         
         public function test_view_inputmobil_sukses() {
                 $_SESSION['username'] = 'admin';
-                
+                $_SESSION['hak_akses'] = 2;
     		$output = $this->request('GET', 'HalamanMobil/inputMobil');
     		$this->assertContains('<title>Green Rent | Dashboard</title>', $output);
         }
         public function test_input_mobil(){
             $_SESSION['username'] = 'admin';
+            $_SESSION['hak_akses'] = 2;
             $filename = '425642.jpg';
             $filepath = APPPATH.  'fototest/' .$filename;
             $files = [
@@ -52,6 +53,7 @@ class HalamanMobil_test extends TestCase
         
           public function test_input_mobil_gagal(){
             $_SESSION['username'] = 'admin';
+            $_SESSION['hak_akses'] = 2;
             $awal = $this->obj1->getCurrentRow('mobil');
             $this->request('POST', 'HalamanMobil/prosesMobil',[
                     'noPolisi' => '',
@@ -63,6 +65,7 @@ class HalamanMobil_test extends TestCase
         }
         public function test_input_mobil_tanpa_gambar(){
             $_SESSION['username'] = 'admin';
+            $_SESSION['hak_akses'] = 2;
             $awal = $this->obj1->getCurrentRow('mobil');
             $this->request('POST', 'HalamanMobil/prosesMobil',[
                     'noPolisi' => 'L1003EL',

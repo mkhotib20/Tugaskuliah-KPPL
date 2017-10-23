@@ -3,7 +3,7 @@
 class halamanSupir extends CI_Controller {
     public function __construct() {
 	parent::__construct();
-       if(!$this->session->has_userdata('username')){
+       if($this->session->userdata('hak_akses')!=2){
             redirect(base_url('login'));
         }
     }
@@ -41,11 +41,12 @@ class halamanSupir extends CI_Controller {
 					$filename = $d['file_name'];
 				}
 				$pathGambar = base_url().$config['upload_path'].$filename;
-				$noKTP = $this->input->post('noKTP');
-				$namaSupir = $this->input->post('namaSupir');
-				$noHP = $this->input->post('noHP');
-				$alamatSupir = $this->input->post('alamatSupir');
-				$noSIM = $this->input->post('noSIM');
+				$this->load->helper('security', true);
+				$noKTP = $this->input->post('noKTP', true);
+				$namaSupir = $this->input->post('namaSupir', true);
+				$noHP = $this->input->post('noHP', true);
+				$alamatSupir = $this->input->post('alamatSupir', true);
+				$noSIM = $this->input->post('noSIM', true);
 				$data = array(
 					'no_ktp' => $noKTP,
 					'nama_supir' => $namaSupir,

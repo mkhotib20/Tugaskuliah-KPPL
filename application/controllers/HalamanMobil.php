@@ -3,7 +3,7 @@
 class halamanMobil extends CI_Controller {
     public function __construct() {
 	parent::__construct();
-       if(!$this->session->has_userdata('username')){
+       if($this->session->userdata('hak_akses')!=2){
             redirect(base_url('login'));
         }
     }
@@ -39,9 +39,10 @@ class halamanMobil extends CI_Controller {
 					$filename = $d['file_name'];
 				}
 				$pathGambar = base_url().$config['upload_path'].$filename;
-				$nopol = $this->input->post('noPolisi');
-				$merk = $this->input->post('merkMobil');
-				$tarif = $this->input->post('tarifMobil');
+				$this->load->helper('security');
+				$nopol = $this->input->post('noPolisi', true);
+				$merk = $this->input->post('merkMobil', true);
+				$tarif = $this->input->post('tarifMobil', true);
 				$data = array(
 					'no_polisi' => $nopol,
 					'merk' => $merk,

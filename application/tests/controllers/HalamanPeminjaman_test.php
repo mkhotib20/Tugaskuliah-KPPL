@@ -2,7 +2,6 @@
 
 class HalamanPeminjaman_test extends TestCase
 {
-  /*  protected $backupGlobalsBlacklist = array( '_SESSION' ); */
     
         public function setUp(){
             $this->resetInstance();
@@ -11,7 +10,7 @@ class HalamanPeminjaman_test extends TestCase
         }
         public function test_view_peminjaman_sukses() {
                 $_SESSION['username'] = 'admin';
-                
+                $_SESSION['hak_akses'] = 2;
     		$output = $this->request('GET', 'HalamanPeminjaman/peminjaman');
     		$this->assertContains('<title>Green Rent | Dashboard</title>', $output);
         }
@@ -21,12 +20,14 @@ class HalamanPeminjaman_test extends TestCase
     }
     public function test_view_input_peminjaman() {
                 $_SESSION['username'] = 'admin';
+                $_SESSION['hak_akses'] = 2;
                 
     		$output = $this->request('GET', 'HalamanPeminjaman/inputPeminjaman');
     		$this->assertContains('<title>Green Rent | Dashboard</title>', $output);
     }
     public function test_prosesPinjam(){
         $_SESSION['username'] = 'admin';
+        $_SESSION['hak_akses'] = 2;
         $inputPeminjamanSebelum = $this->obj1->getCurrentRow('peminjaman');
         $inputPeminjamSebelum = $this->obj1->getCurrentRow('peminjam');
         $output = $this->request('POST','HalamanPeminjaman/prosesPinjam', [
@@ -57,6 +58,7 @@ class HalamanPeminjaman_test extends TestCase
     
     public function test_prosesPinjam_tanpa_supir(){
         $_SESSION['username'] = 'admin';
+        $_SESSION['hak_akses'] = 2;
         $inputPeminjamanSebelum = $this->obj1->getCurrentRow('peminjaman');
         $inputPeminjamSebelum = $this->obj1->getCurrentRow('peminjam');
         $output = $this->request('POST','HalamanPeminjaman/prosesPinjam', [
@@ -83,6 +85,7 @@ class HalamanPeminjaman_test extends TestCase
     
     public function test_prosesPinjam_gagal(){
         $_SESSION['username'] = 'admin';
+        $_SESSION['hak_akses'] = 2;
         $inputPeminjamanSebelum = $this->obj1->getCurrentRow('peminjaman');
         $inputPeminjamSebelum = $this->obj1->getCurrentRow('peminjam');
         $output = $this->request('POST','HalamanPeminjaman/prosesPinjam', [

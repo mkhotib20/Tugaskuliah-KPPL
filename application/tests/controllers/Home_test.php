@@ -10,7 +10,7 @@ class Home_test extends TestCase
     
     public function test_view_home_sukses() {
                 $_SESSION['username'] = 'admin';
-                
+                $_SESSION['hak_akses'] = 2;
     		$output = $this->request('GET', 'Home/index');
     		$this->assertContains('<title>Green Rent | Dashboard</title>', $output);
     }

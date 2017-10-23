@@ -19,6 +19,12 @@ class HalamanSupir_test extends TestCase
     	$this->assertRedirect('login');
     }
     
+    public function test_view_inputsupir_sukses() {
+        $_SESSION['username'] = 'admin';
+        $output = $this->request('GET', 'HalamanSupir/inputSupir');
+    	$this->assertContains('<title>Green Rent | Dashboard</title>', $output);
+    }
+    
     public function test_input_supir(){
         $_SESSION['username'] = 'admin';
         $filename = '1.jpg';
@@ -52,6 +58,20 @@ class HalamanSupir_test extends TestCase
             'noHP' => '',
             'alamatSupir' => '',
             'noSIM' => ''
+            ]);
+        $akhir1 = $this->obj1->getCurrentRow('supir');
+        $this->assertEquals($akhir1, $awal1);        
+    }
+    
+    public function test_input_supir_tanpa_gambar(){
+        $_SESSION['username'] = 'admin';
+        $awal1 = $this->obj1->getCurrentRow('supir');
+	$this->request('POST', 'HalamanSupir/prosesSupir',[
+            'noKTP' => '1232323',
+            'namaSupir' => 'Testing',
+            'noHP' => '989889',
+            'alamatSupir' => 'Testing',
+            'noSIM' => 'Testing'
             ]);
         $akhir1 = $this->obj1->getCurrentRow('supir');
         $this->assertEquals($akhir1, $awal1);        

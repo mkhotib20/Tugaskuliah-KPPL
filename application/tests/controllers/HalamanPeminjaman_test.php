@@ -46,6 +46,13 @@ class HalamanPeminjaman_test extends TestCase
         
         $inputPeminjamanSesudah = $this->obj1->getCurrentRow('peminjaman');
         $this->assertEquals($inputPeminjamSesudah,$inputPeminjamSebelum+1);
+        $dataUpdate = array(
+            'status' => 1 , 
+	);
+        $this->obj1->update('mobil', $dataUpdate, 'no_polisi', 'L1577F');
+	$this->obj1->update('supir', $dataUpdate, 'no_ktp', '928938989');
+        $this->obj1->delete('peminjaman', 'kode_pinjam', '109393');
+        $this->obj1->delete('peminjam', 'no_ktp_peminjam', '11');
     }
     
     public function test_prosesPinjam_tanpa_supir(){
@@ -69,6 +76,8 @@ class HalamanPeminjaman_test extends TestCase
         
         $inputPeminjamanSesudah = $this->obj1->getCurrentRow('peminjaman');
         $this->assertEquals($inputPeminjamSesudah,$inputPeminjamSebelum+1);
+        $this->obj1->delete('peminjaman', 'kode_pinjam', '87654531');
+        $this->obj1->delete('peminjam', 'no_ktp_peminjam', '12');
     }
     
     
